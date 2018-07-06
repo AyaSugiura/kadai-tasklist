@@ -1,0 +1,13 @@
+
+<% if current_user.liking?(task) %>
+  <%= form_for(current_user.favorites.find_by(task_id: task.id), html: { method: :delete}) do |f| %>
+    <%= hidden_field_tag :task_id, task.id %>
+    <%= f.submit "いいねやめる", class: "btn btn-danger btn-xs" %>
+  <% end %>
+<% else %>
+  <%= form_for(current_user.favorites.build) do |f| %>
+    <%= hidden_field_tag :task_id, task.id %>
+    <%= f.submit "いいね♪", class: "btn btn-primary btn-xs" %>
+  <% end %>
+<% end %>
+

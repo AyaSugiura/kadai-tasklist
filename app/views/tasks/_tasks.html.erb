@@ -12,6 +12,7 @@
         <div>
           <p> タスク：<%= task.content %> </p>
           <p> ステータス：<%= task.status %> </p>
+          <%= render "favorites/like_button", task: task %>
         </div>
         <div>
           <% if current_user == task.user %>
